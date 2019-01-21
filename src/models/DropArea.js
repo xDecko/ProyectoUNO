@@ -9,7 +9,7 @@ class DropArea{
             image: ()=>{ console.log("Image Dropped, this is a default message, please subscribe."); },
             audio: ()=>{ console.log("Audio Dropped, this is a default message, please subscribe."); },
             video: ()=>{ console.log("Video Dropped, this is a default message, please subscribe."); },
-            text: ()=>{ console.log("Text Dropped, this is a default message, please subscribe."); },
+            texto: ()=>{ console.log("Text Dropped, this is a default message, please subscribe."); },
             pdf: ()=>{ console.log("PDF Dropped, this is a default message, please subscribe."); }
         };
     }
@@ -64,21 +64,25 @@ class DropArea{
         let toEmit = "";
 
         if(file.type == "image/png" || file.type == "image/gif"
-        || file.type == "image/jpeg" || file.type == "image/webp"){
+        || file.type == "image/jpeg" || file.type == "image/webp"
+        || file.type == "image/tiff"){
             toEmit = "image";
         }
 
         if(file.type == "audio/aac" || file.type == "audio/ogg"
-        || file.type == "audio/mp3" || file.type == "audio/webm"){
+        || file.type == "audio/mp3" || file.type == "audio/webm"
+        || file.type == "audio/x-m4a"|| file.type == "audio/wav"){
             toEmit = "audio";
         }
 
         if(file.type == "video/mpeg" || file.type == "video/ogg"
-        || file.type == "video/avi" || file.type == "video/webm"){
+        || file.type == "video/avi" || file.type == "video/webm"
+        || file.type == "video/wmv"|| file.type == "video/mp4"){
             toEmit = "video";
         }
 
-        if(file.type == "text/plain" || file.type == "text/html"){
+        if(file.type == "text/plain" || file.type == "text/html"
+        || file.type == "text/php"|| file.type == "text/javascript"){
             toEmit = "text";
         }
 

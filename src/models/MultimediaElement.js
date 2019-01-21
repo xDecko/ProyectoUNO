@@ -42,21 +42,25 @@ class MultimediaElement{
         var element = null;
 
         if(this.type == "image/png" || this.type == "image/gif"
-        || this.type == "image/jpeg" || this.type == "image/webp"){
+        || this.type == "image/jpeg" || this.type == "image/webp"
+        || this.type == "image/tiff"){
             element = document.createElement("img");
         }
 
         if(this.type == "audio/aac" || this.type == "audio/ogg"
-        || this.type == "audio/mp3" || this.type == "audio/webm"){
+        || this.type == "audio/mp3" || this.type == "audio/webm"
+        || this.type == "audio/x-m4a"|| this.type == "audio/wav"){
             element = document.createElement("audio");
         }
 
         if(this.type == "video/mpeg" || this.type == "video/ogg"
-        || this.type == "video/avi" || this.type == "video/webm"){
+        || this.type == "video/avi" || this.type == "video/webm"
+        || this.type == "video/mp4"|| this.type == "video/wmv"){
             element = document.createElement("video");
         }
 
-        if(this.type == "text/plain" || this.type == "text/html"){
+        if(this.type == "text/plain" || this.type == "text/html"
+        || this.type == "text/php"|| this.type == "text/javascript"){
             element = document.createElement("div");
         }
 
@@ -164,6 +168,67 @@ class MultimediaElement{
             });
             
         });
+    }
+
+    static delete(resource,tag,elId,id=null){
+        var options = { 
+            method: 'POST',
+            mode: 'cors',
+            cache: 'default',
+            headers: {
+                'Access-Control-Allow-Origin':'*'
+            }
+        };
+
+        if(id != null){
+            let data = new FormData();
+            data.append("id",id);
+            options.body = data;
+        }
+
+        let url = `${URLServidor}${resource}?exec=select`;
+        fetch(url,options)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(json) {
+            json.forEach(el => {
+                if(document.querySelector(`#selectArea #${elId}${el.id}`) == null){
+                    document.querySelector("#selectArea").innerHTML +=`
+                    <div class="file" id="">                   
+                        <button hidden="true" type="button" onclick=(${MultimediaElement.drop(resource,el.id)})>Eliminar objeto de la base de datos</button>
+                    </div> `; 
+                }
+            });
+            
+        });
+    }
+
+    static drop(resource,llave){
+        let data = {
+            id: llave
+        };
+        var params = new FormData();
+        for (const key in data) {
+            params.append(key,data[key]);
+        }
+        var options = { 
+            method: 'POST',
+            mode: 'cors',
+            cache: 'default',
+            headers: {
+                'Access-Control-Allow-Origin': ""
+            },
+            body: params
+        };
+
+        let url = `${URLServidor}${resource}?exec=delete` ;
+
+        fetch(url,options)
+        .then(function(response) {
+            return response.json();
+        }) ;
+        
     }
 
     _dataToURLParams(data){

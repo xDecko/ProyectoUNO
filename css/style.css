@@ -15,20 +15,23 @@ body{
 #app{
     width: 100%;
     height: 100%;
-    background: #ff7c01;
+    background-image:url("./../assets/fondo.jpeg");
+    background-position: center;
+    background-size: cover;  
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #dropArea, #selectArea{
-    width: 25vw;
-    height: 25vw;
+    width: 30vw;
+    height: 30vw;
     max-height: 35vw;
-    background: white;
+    background: rgb(240, 132, 31);
+    opacity: 0.9;
     box-shadow: 0px 4px 6px rgba(0,0,0,0.28);
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 30px;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
@@ -50,10 +53,13 @@ body{
     position: sticky;
     top: -20px;
     width: 100%;
-    background: rgba(255,255,255,1);
+    background-image:url("./../assets/logousb.png");
+    background-position: center;
+    background-size: 170%; 
+    opacity:0.2;
     padding: 0px 10px;
     font-size: 280%;
-    color: gray;
+    color: rgb(0, 0, 0);
     height: 100%;
     display: flex;
     justify-content: center;
@@ -83,6 +89,7 @@ body{
     margin-right: 5px;
 }
 
+
 #dropArea .file .info img{
     width: 15%;
 }
@@ -94,9 +101,11 @@ body{
 #selectArea button{
     padding: 5px 15px;
     width: 100%;
+    background: rgb(255, 255, 255);
     font-size: 90%;
     font-weight: bold;
     margin-bottom: 5px;
+    border-radius: 30px;
 }
 
 #dropArea .file .info video, #dropArea .file .info iframe{

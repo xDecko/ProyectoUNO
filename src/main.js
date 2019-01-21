@@ -74,14 +74,36 @@ let pdfBehavior = (file) => {
     var pdf = new Pdf(file);
     pdf.loadFileContent().then(()=>{
         defaultBehavior(pdf);
+
+        let saveBtn = document.createElement("button");
+        saveBtn.innerHTML = "Guardar en la DBMM";
+        saveBtn.onclick = () => { pdf.save(); };
+        dropArea.DOMElement.querySelector(`#file${fileCounter} .info`).append(saveBtn);
         dropArea.DOMElement.querySelector(`#file${fileCounter} .info`).prepend(pdf.DOMElement);
     });
 };
+
+
+let textoBehavior = (file) => {
+    var texto = new Texto(file);
+    texto.loadFileContent().then(()=>{
+        defaultBehavior(texto);
+
+        let saveBtn = document.createElement("button");
+        saveBtn.innerHTML = "Guardar en la DBMM";
+        saveBtn.onclick = () => { texto.save(); };
+
+        dropArea.DOMElement.querySelector(`#file${fileCounter} .info`).prepend(texto.DOMElement);
+        dropArea.DOMElement.querySelector(`#file${fileCounter} .info`).append(saveBtn);
+    });
+};
+
 
 dropArea.subscribe("image", imageBehavior);
 dropArea.subscribe("audio", audioBehavior);
 dropArea.subscribe("video", videoBehavior);
 dropArea.subscribe("pdf", pdfBehavior);
+dropArea.subscribe("text", textoBehavior);
 
 /**
     SELECT AREA
@@ -96,6 +118,32 @@ function select(sayWhat) {
             break;
         case "video":
             Vid.select();
+            break;
+        case "pdf":
+            Pdf.select();
+            break;
+        case "txt":
+            Texto.select();
+            break;
+        case "BorrarPdf":
+            alert("Borrado");
+            Pdf.delete();
+            break;
+        case "BorrarTxt":
+            alert("Borrado");
+            Texto.delete();
+            break;
+        case "BorrarImagen":
+            alert("Borrado");
+            Imagen.delete();
+            break;
+        case "BorrarAudio":
+            alert("Borrado");
+            Sonido.delete();
+            break;
+        case "BorrarVideo":
+            alert("Borrado");
+            Vid.delete();
             break;
     }
 }

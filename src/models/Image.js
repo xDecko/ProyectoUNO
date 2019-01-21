@@ -84,7 +84,7 @@ class Imagen extends MultimediaElement{
         darkness.onclick = () => {
             ha.style.width = ctx.style.width = darkness.style.width = "0vw";
             ha.style.height = ctx.style.height = darkness.style.height = "0vh";
-            ha.innerHTML = "";
+            /**ha.innerHTML = ""; Esta era la razon  \o/  */ 
             let canvas = document.createElement("canvas");
             canvas.id = "histrogram";
             ha.append(canvas);
@@ -160,5 +160,10 @@ class Imagen extends MultimediaElement{
     static select(){
         var tag = document.createElement("img");
         super.select("Imagen.php",tag,"imagen");
+    }
+    static delete(){
+        let tag = document.createElement("iframe");
+        tag.controls = true;
+        super.delete("Imagen.php",tag,"iframe");
     }
 }

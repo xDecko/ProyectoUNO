@@ -1,8 +1,12 @@
-class Pdf extends MultimediaElement{
+class Texto extends MultimediaElement{
     constructor(file,type = null){
         let element = document.createElement("iframe");
         element.controls = true;
         super(file,type,element);
+    }
+
+    save(){
+        super.save("Texto.php");
     }
 
     loadFileContent(){
@@ -12,27 +16,18 @@ class Pdf extends MultimediaElement{
                 this.DOMElement.onload = () => {
                 }
                 resolve();
-                
             });
           });
     }
 
-    save(){
-        super.save("Pdf.php");
-    }
-
-    
     static select(){
         let tag = document.createElement("iframe");
         tag.controls = true;
-        super.select("Pdf.php",tag,"pdf");
+        super.select("Texto.php",tag,"iframe");
     }
-
     static delete(){
         let tag = document.createElement("iframe");
         tag.controls = true;
-        super.delete("Pdf.php",tag,"pdf");
+        super.delete("Texto.php",tag,"iframe");
     }
-    
-    
 }
