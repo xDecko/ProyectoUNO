@@ -56,17 +56,6 @@ Como el proyecto maneja archivos multimedia y peticiones de tipo CORS en entorno
 	
 	innodb_log_file_size = 256M
 ```
-## Descripción de entregable
-
-En grupos de máximo 3 estudiantes desarrollarán el proyecto de fin de curso de MMDB.
-
-**Ustedes**
-
-![Ustedes](assets/grupo.jpeg)
-
-El proyecto será desarrollado bajo las tecnologías aprendidas en clase y la entrega se hará por medio de sustentación presencial y entrega del proyecto en un repositorio alojado en [GitHub](www.github.com), el cual será de acceso privado hasta después de ser calificado y por ende deberán asignar al docente como **colaborador** del mismo para que pueda revisarle.
-
-### Entregables
 
 #### 1. Cliente
 El cliente dispondrá de las siguientes capacidades:
